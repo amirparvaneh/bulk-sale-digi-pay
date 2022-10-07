@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="0.1.0-1" author="DigiPay">
+        <createTable tableName="CUSTOMERS">
+            <column name="ID" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="USERNAME" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FIRST_NAME" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LAST_NAME" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="CUSTOMERS" columnNames="ID" constraintName="PK_CUSTOMERS"/>
+    </changeSet>
+
+    <changeSet id="0.1.0-2" author="DigiPay">
+        <createTable tableName="PRODUCTS">
+            <column name="ID" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRICE" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="AVAILABLE_COUNT" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="PRODUCTS" columnNames="ID" constraintName="PK_PRODUCTS"/>
+    </changeSet>
+
+    <changeSet id="0.1.0-3" author="DigiPay">
+        <createTable tableName="ORDERS">
+            <column name="ID" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CUSTOMER_ID" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRODUCT_ID" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COUNT" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="ORDERS" columnNames="ID" constraintName="PK_ORDERS"/>
+    </changeSet>
+
+    <changeSet id="0.1.0-4" author="DigiPay">
+        <createTable tableName="JC_WALLET">
+            <column name="ID" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BALANCE" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LAST_UPDATE_TIME" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="JC_WALLET" columnNames="ID" constraintName="PK_JC_WALLET"/>
+    </changeSet>
+
+    <changeSet id="0.1.0-5" author="DigiPay">
+        <createTable tableName="JC_TRANSACTION">
+            <column name="ID" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="OWNER_WALLET_ID" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PEER_WALLET_ID" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="AMOUNT" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATION_TIME" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="JC_TRANSACTION" columnNames="ID" constraintName="PK_JC_TRANSACTION"/>
+    </changeSet>
+
+</databaseChangeLog>
